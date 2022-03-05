@@ -7,11 +7,9 @@ from typing import List, Tuple
 
 
 class Attack:
-    def __init__(self, type: int, atk: int, which: int = 0, aoe: bool = False, is_penetrate: bool = False, special: str = None):
-        # 攻击类型（0 -> 物理, 1 -> 魔法, 2 -> 真实）
-        self.type = type
-        # 攻击力
-        self.atk = atk
+    def __init__(self, physiical: int, magical: int, real: int, which: int = 0, aoe: bool = False, is_penetrate: bool = False, special: str = None):
+        # 攻击力（0 -> 物理, 1 -> 魔法, 2 -> 真实）
+        self.atk = [physiical, magical, real]
         # 特效
         self.special = special
         # 无视盾
@@ -45,6 +43,13 @@ class Monster:
     shield_damage_coe: List[int] = [0.5, 0.5, 1]
     # 本体伤害系数（0 -> 物理, 1 -> 魔法, 2 -> 真实）
     self_damage_coe: List[int] = [1, 1, 1]
+    # 当前状态
+    state: int = 1
+    # 总状态数
+    total_state: int
+    # 状态字典（hp）
+    state_detail: dict = {1: 0}
+
 
     def __str__(self):
         return f"【怪物信息】 名字：{self.name}\n" \

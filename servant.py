@@ -1,0 +1,2 @@
+class Servant:
+    pass
