@@ -6,20 +6,7 @@ from random import randint
 from typing import List, Tuple
 
 
-class Attack:
-    def __init__(self, physiical: int, magical: int, real: int, which: int = 0, aoe: bool = False, is_penetrate: bool = False, special: str = None):
-        # 攻击力（0 -> 物理, 1 -> 魔法, 2 -> 真实）
-        self.atk = [physiical, magical, real]
-        # 特效
-        self.special = special
-        # 无视盾
-        self.is_penetrate = is_penetrate
-        # 攻击第几个头
-        self.which = which
-        # AOE伤害
-        self.aoe = aoe
-
-
+# 怪物类
 class Monster:
     # 星级
     star: int

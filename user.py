@@ -2,7 +2,10 @@
 # -*- coding: utf-8 -*-
 
 
+# 人物类
 class User:
+    # 角色名称
+    name: str
     # 生命值
     hp: int
     # 护盾值
