@@ -4,6 +4,8 @@
 from math import ceil
 from random import randint
 from typing import List, Tuple
+from game import Attack
+from user import User
 
 
 # 怪物类
@@ -14,14 +16,16 @@ class Monster:
     name: str
     # 描述
     description: str
+    # 几个头
+    head: int
     # 生命值
-    hp: List[int]
+    hp: int
     # 生命值上限
-    hp_max: Tuple[int]
+    hp_max: int
     # 多段攻击
     # is_mul_atk: bool = False
-    # 攻击力
-    atk: List[int]
+    # 攻击
+    atk: List[Attack]
     # 护盾
     shield: int = 0
     # 是否AOE
@@ -36,6 +40,8 @@ class Monster:
     total_state: int
     # 状态字典（hp）
     state_detail: dict = {1: 0}
+    # 攻击哪名玩家
+    lucky_people: User = None
 
 
     def __str__(self):

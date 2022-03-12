@@ -1,34 +1,3 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-
-
-# 全局游戏类
-class GlobalGame:
-    # 总人数
-    total_num: int
-    # 存活人数
-    exist_num: int
-    # 死亡人数
-    dead_num: int
-    # 灵魂人数
-    ghost_num: int
-    # 濒死人数
-    dying_num: int
-    # 回合数
-    turn: int = 1
-    # 人物列表
-    people: list
-    # 怪物列表
-    monsters: list
-    # 游戏时间
-    spent_time: int
-
-    # 游戏结束
-    def game_over(game_state: int):
-        return 
-
-
-# 攻击类
 class Attack:
     def __init__(self, physiical: int, magical: int, real: int, anti_shield: int = 0, which: int = 0, aoe: bool = False, is_penetrate: bool = False, is_frozen: bool = False, is_inescapable: bool = False):
         # 攻击力（0 -> 物理, 1 -> 魔法, 2 -> 真实, 3 -> 对盾额外伤害）
@@ -57,3 +26,9 @@ class Attack:
     
     def __str__(self) -> str:
         return '{} {} {} {} {} {} {} {} {}'.format(self.atk[0], self.atk[1], self.atk[2], self.atk[3], self.which, self.aoe, self.is_penetrate, self.is_inescapable, self.is_frozen)
+
+
+if __name__ == "__main__":
+    a = Attack(1, 2, 3, 4, 5, True, False, True, False)
+    b = Attack(1, 2, 3, 4, 5, True, True, False, False)
+    print(a | b)

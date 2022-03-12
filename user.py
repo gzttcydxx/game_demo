@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+from game import Attack
 
 # 人物类
 class User:
@@ -14,8 +15,14 @@ class User:
     defend: int = 0
     # 是否AOE
     aoe: bool = False
+    # 是否嘲讽
+    is_taunt: bool = False
+    # 是否禁疗
+    is_forbidden_heal: bool = False
     # 伤害系数
     attack_coe: float
+    # 基础攻击
+    attack: Attack = Attack(0, 3, 0) # 或运算
     # 手牌
     hand: list
     # 手牌上限
