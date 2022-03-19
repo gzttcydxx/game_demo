@@ -6,42 +6,48 @@ from random import randint
 from typing import List, Tuple
 from game import Attack
 from user import User
+import pygame
 
 
 # 怪物类
-class Monster:
-    # 星级
-    star: int
-    # 名字
-    name: str
-    # 描述
-    description: str
-    # 几个头
-    head: int
-    # 生命值
-    hp: int
-    # 生命值上限
-    hp_max: int
-    # 多段攻击
-    # is_mul_atk: bool = False
-    # 攻击
-    atk: List[Attack]
-    # 护盾
-    shield: int = 0
-    # 是否AOE
-    aoe: bool = False
-    # 护盾伤害系数（0 -> 物理, 1 -> 魔法, 2 -> 真实）
-    shield_damage_coe: List[int] = [0.5, 0.5, 1]
-    # 本体伤害系数（0 -> 物理, 1 -> 魔法, 2 -> 真实）
-    self_damage_coe: List[int] = [1, 1, 1]
-    # 当前状态
-    state: int = 1
-    # 总状态数
-    total_state: int
-    # 状态字典（hp）
-    state_detail: dict = {1: 0}
-    # 攻击哪名玩家
-    lucky_people: User = None
+class Monster(pygame.sprite.Sprite):
+    def __init__(self) -> None:
+        # 继承父类
+        super(Monster, self).__init__()
+        # 星级
+        self.star: int
+        # 名字
+        self.name: str
+        # 描述
+        self.description: str
+        # 几个头
+        self.head: int
+        # 生命值
+        self.hp: int
+        # 生命值上限
+        self.hp_max: int
+        # 多段攻击
+        # self.is_mul_atk: bool = False
+        # 攻击
+        self.atk: List[Attack]
+        # 护盾
+        self.shield: int = 0
+        # 防御力
+        self.defend: int
+        # 是否AOE
+        self.aoe: bool = False
+        # 护盾伤害系数（0 -> 物理, 1 -> 魔法, 2 -> 真实）
+        self.shield_damage_coe: List[int] = [0.5, 0.5, 1]
+        # 本体伤害系数（0 -> 物理, 1 -> 魔法, 2 -> 真实）
+        self.self_damage_coe: List[int] = [1, 1, 1]
+        # 当前状态
+        self.state: int = 1
+        # 总状态数
+        self.total_state: int
+        # 状态字典（hp）
+        self.state_detail: dict = {1: 0}
+        # 攻击哪名玩家
+        self.lucky_people: User = None
 
 
     def __str__(self):

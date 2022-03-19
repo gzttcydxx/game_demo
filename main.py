@@ -1,26 +1,22 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+import pygame
+from pygame.locals import *
+from game import GlobalGame, Attack
 from monster import *
 
 
-def loop():
-    mst = JuYanLong()
-    print(mst)
-    print(mst.character())
-    print("--------------【开始攻击】--------------")
-    while mst.is_alive:
-        while (atk := input()) != "-1":
-            if "hp" in atk:
-                mst.heal(*map(int, atk[3:].split()))
-            elif atk == "rv":
-                mst.revival()
-            else:
-                mst.attacked(Attack(*map(int, atk.split())))
-        print(f"【怪物信息】 生命：{mst.hp}, 护盾：{mst.shield}")
-        print(f"【怪物攻击】 攻击力: {mst.atk}, AOE: {mst.aoe}")
-    print(f"--------------【讨伐成功】--------------")
+def main():
+    global_game = GlobalGame(800, 600)
+    
+    while True:
+        global_game.clock.tick(60)
+        for event in pygame.event.get():
+            if event.type == QUIT:
+                global_game.game_over()
+                return
 
 
 if __name__ == "__main__":
-    loop()
+    main()

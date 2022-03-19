@@ -1,30 +1,54 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+import pygame
+# from pygame.locals import *
+
+
+__VERSION__ = "0.1.0"
+
 
 # 全局游戏类
 class GlobalGame:
+    def __init__(self, width: int, height: int):
+        # 调用显示模块的初始化
+        pygame.display.init()
+        # 创建窗口
+        self.window = pygame.display.set_mode([width, height])
+        # Fill background
+        self.background = pygame.Surface(self.window.get_size()).convert()
+        self.background.fill((0, 0, 0))
+        # Blit everything to the screen
+        self.window.blit(self.background, (0, 0))
+        pygame.display.flip()
+        # Initialise clock
+        self.clock = pygame.time.Clock()
+        # Game Title
+        pygame.display.set_caption('Game Demo')
+
+        # 存活人数
+        self.exist_num: int
+        # 死亡人数
+        self.dead_num: int
+        # 灵魂人数
+        self.ghost_num: int
+        # 濒死人数
+        self.dying_num: int
+        # 回合数
+        self.turn: int = 1
+        # 人物列表
+        self.people: pygame.sprite.Group
+        # 怪物列表
+        self.monsters: pygame.sprite.Group
+    
     # 总人数
-    total_num: int
-    # 存活人数
-    exist_num: int
-    # 死亡人数
-    dead_num: int
-    # 灵魂人数
-    ghost_num: int
-    # 濒死人数
-    dying_num: int
-    # 回合数
-    turn: int = 1
-    # 人物列表
-    people: list
-    # 怪物列表
-    monsters: list
-    # 游戏时间
-    spent_time: int
+    @property
+    def total_num(self):
+        return len(pygame.sprite.Group)
 
     # 游戏结束
     def game_over(game_state: int):
+        pygame.display.quit()
         return 
 
 

@@ -2,22 +2,29 @@
 # -*- coding: utf-8 -*-
 
 
+import pygame
 from game import Attack
 from user import User
 
 
 # 卡牌类
-class Card:
-    # 卡牌名称
-    name: str
-    # 使用主体
-    entity: User
+class Card(pygame.sprite.Sprite):
+    def __init__(self) -> None:
+        # 继承父类
+        super(Card, self).__init__()
+        # 卡牌名称
+        self.name: str
+        # 使用主体
+        self.entity: User
 
 
 # 伤害卡牌类
 class DamageCard(Card):
-    # 卡牌伤害
-    damage: Attack
+    def __init__(self) -> None:
+        # 继承父类
+        super(Card, self).__init__()
+        # 卡牌伤害
+        self.damage: Attack
 
     # 先手特效
     def effect_sente(self):
@@ -34,8 +41,11 @@ class DamageCard(Card):
 
 # 技能卡牌类
 class SkillCard(Card):
-    # 技能类型（0 -> 战术技能, 1 -> 反击技能, 2 -> 终极技能）
-    type: int
+    def __init__(self) -> None:
+        # 继承父类
+        super(Card, self).__init__()
+        # 技能类型（0 -> 战术技能, 1 -> 反击技能, 2 -> 终极技能）
+        type: int
 
 
 # ------------------------伤害牌------------------------ #
