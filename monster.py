@@ -99,7 +99,7 @@ class Monster(pygame.sprite.Sprite):
 class GuaiLiYuan(Monster):
     name = "怪力螈"
     star = 3
-    hp = [15]
+    hp = [20]
     hp_max = tuple(hp)
     atk = [3]
 
